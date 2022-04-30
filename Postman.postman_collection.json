@@ -1,0 +1,219 @@
+{
+	"info": {
+		"_postman_id": "a97da7ec-edd8-4fe1-899c-d7ce1f8421de",
+		"name": "Postman",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "get clientes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8086/clientes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8086",
+					"path": [
+						"clientes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get cliente id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8086/cliente/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8086",
+					"path": [
+						"cliente",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete cliente id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8086/cliente/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8086",
+					"path": [
+						"cliente",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get cuentas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8086/cuentas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8086",
+					"path": [
+						"cuentas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get cuenta id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8086/cuenta/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8086",
+					"path": [
+						"cuenta",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete cuenta id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8086/cuenta/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8086",
+					"path": [
+						"cuenta",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get movimientos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8086/movimientos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8086",
+					"path": [
+						"movimientos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get movimiento id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8086/movimiento/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8086",
+					"path": [
+						"movimiento",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete movimiento id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8086/movimiento/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8086",
+					"path": [
+						"movimiento",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "reporte",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8086/report?desde=\"28/04/2022\"&hasta=\"28/04/2022\"&cliente=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8086",
+					"path": [
+						"report"
+					],
+					"query": [
+						{
+							"key": "desde",
+							"value": "\"28/04/2022\""
+						},
+						{
+							"key": "hasta",
+							"value": "\"28/04/2022\""
+						},
+						{
+							"key": "cliente",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
