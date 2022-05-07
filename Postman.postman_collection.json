@@ -45,6 +45,34 @@
 			"response": []
 		},
 		{
+			"name": "create cliente",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"contrasena\": \"3467\",\r\n    \"estado\": false,\r\n    \"persona\": {\r\n        \"nombre\": \"Maria Perez\",\r\n        \"genero\": \"Femenino\",\r\n        \"edad\": 27,\r\n        \"identificacion\": \"1735241728\",\r\n        \"direccion\": \"Av. Eloy Alfaro\",\r\n        \"telefono\": \"094839212\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8086/cliente",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8086",
+					"path": [
+						"cliente"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "delete cliente id",
 			"request": {
 				"method": "DELETE",
@@ -98,6 +126,34 @@
 					"path": [
 						"cuenta",
 						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create cuenta",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"numCuenta\": 546379,\r\n     \"tipoCuenta\": \"Ahorros\",\r\n     \"saldoInicial\": 200.0,\r\n     \"estado\": false,\r\n    \"cliente\": {\r\n        \"clienteId\": 2\r\n        }\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8086/cuenta",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8086",
+					"path": [
+						"cuenta"
 					]
 				}
 			},
@@ -163,6 +219,90 @@
 			"response": []
 		},
 		{
+			"name": "create movimiento Débito",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"fecha\": \"2022-04-28\",\r\n    \"tipoMovimiento\": \"Débito\",\r\n    \"valor\": 500.0,\r\n    \"cuenta\": {\r\n         \"cuentaId\": 1,    \r\n         \"numCuenta\": 265879\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8086/movimiento",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8086",
+					"path": [
+						"movimiento"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create movimiento Crédito",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"fecha\": \"2022-05-06\",\r\n    \"tipoMovimiento\": \"Crédito\",\r\n    \"valor\": 800.0,\r\n    \"cuenta\": {\r\n         \"cuentaId\": 1,    \r\n         \"numCuenta\": 265879\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8086/movimiento",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8086",
+					"path": [
+						"movimiento"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create movimiento Retiro",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"fecha\": \"2022-04-28\",\r\n    \"tipoMovimiento\": \"Crédito\",\r\n    \"valor\": 100.0,\r\n    \"saldo\": 1000.0,\r\n    \"cuenta\": {\r\n         \"cuentaId\": 1,    \r\n         \"numCuenta\": 265879\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8086/movimiento",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8086",
+					"path": [
+						"movimiento"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "delete movimiento id",
 			"request": {
 				"method": "DELETE",
@@ -188,7 +328,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8086/report?desde=\"28/04/2022\"&hasta=\"28/04/2022\"&cliente=1",
+					"raw": "http://localhost:8086/report?desde=27/04/2022&hasta=05/05/2022&cliente=1",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -200,11 +340,11 @@
 					"query": [
 						{
 							"key": "desde",
-							"value": "\"28/04/2022\""
+							"value": "27/04/2022"
 						},
 						{
 							"key": "hasta",
-							"value": "\"28/04/2022\""
+							"value": "05/05/2022"
 						},
 						{
 							"key": "cliente",

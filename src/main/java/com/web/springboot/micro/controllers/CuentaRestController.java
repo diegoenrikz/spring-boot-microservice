@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.web.springboot.micro.model.dao.IRetiroDao;
 import com.web.springboot.micro.model.dto.CuentaDto;
 import com.web.springboot.micro.model.entity.Cuenta;
+import com.web.springboot.micro.model.entity.RetiroDiario;
 import com.web.springboot.micro.model.mapper.CuentaMapper;
 import com.web.springboot.micro.service.ICuentaService;
 
@@ -24,6 +26,9 @@ public class CuentaRestController {
 	
 	@Autowired
 	private CuentaMapper cuentaMapper;
+	
+	@Autowired
+	private IRetiroDao retiroDao;
 	
 
 	@GetMapping(value = "/cuentas")
@@ -41,6 +46,10 @@ public class CuentaRestController {
 
 	@PostMapping(value = "/cuenta")
 	public void addCuenta(@RequestBody Cuenta cuenta) {
+		cuenta.setSaldoTotal(cuenta.getSaldoInicial());
+		RetiroDiario retiroDiario = new RetiroDiario();
+		retiroDiario.setNumCuenta(cuenta.getNumCuenta());
+		retiroDao.save(retiroDiario);
 		cuentaService.save(cuenta);
 		
 	}

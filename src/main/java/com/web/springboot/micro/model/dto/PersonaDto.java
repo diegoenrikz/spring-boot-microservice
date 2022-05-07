@@ -21,6 +21,6 @@ public class PersonaDto {
 	
 	private String direccion;
 	
-	private long telefono;
+	private String telefono;
 
 }

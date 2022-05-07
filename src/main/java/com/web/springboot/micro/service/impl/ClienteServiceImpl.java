@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.web.springboot.micro.model.dao.IClienteDao;
 import com.web.springboot.micro.model.entity.Cliente;
+import com.web.springboot.micro.model.entity.Cuenta;
 import com.web.springboot.micro.service.IClienteService;
 
 @Service

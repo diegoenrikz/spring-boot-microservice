@@ -1,6 +1,9 @@
 package com.web.springboot.micro.controllers;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +11,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.web.springboot.micro.model.dao.ICuentaDao;
+import com.web.springboot.micro.model.dao.IMovimientosDao;
 import com.web.springboot.micro.model.dto.ReporteDto;
+import com.web.springboot.micro.model.entity.Cuenta;
 import com.web.springboot.micro.model.entity.Movimientos;
 import com.web.springboot.micro.model.mapper.MovimientosMapper;
 import com.web.springboot.micro.service.IMovimientosService;
@@ -22,26 +28,50 @@ public class ReportRestController {
 	@Autowired
 	private MovimientosMapper movimientosMapper;
 
+	@Autowired
+	private IMovimientosDao movimientoDao;
+
+	@Autowired
+	private ICuentaDao cuentaDao;
+
 	@GetMapping(value = "/report")
 	public List<ReporteDto> reportes(@RequestParam(value = "desde") String desde,
-			@RequestParam(value = "hasta") String hasta, @RequestParam(value = "cliente") Integer cliente) {
-		List<ReporteDto> listReports = new ArrayList<>();
+			@RequestParam(value = "hasta") String hasta, @RequestParam(value = "cliente") Integer cliente)
+			throws ParseException {
 
-		List<Movimientos> listMovimientos = movimientosService.findMovimientos(desde, hasta, cliente);
-		for (Movimientos movimientos : listMovimientos) {
+		List<ReporteDto> listReport = new ArrayList<>();
+
+		Date dateHasta = new SimpleDateFormat("dd/MM/yyyy").parse(desde);
+
+		Date dateDesde = new SimpleDateFormat("dd/MM/yyyy").parse(hasta);
+
+		List<Cuenta> listCuentas = cuentaDao.findbyClient(cliente);
+		for (Cuenta cuenta : listCuentas) {
 			ReporteDto report = new ReporteDto();
-			report.setCliente(movimientos.getCuenta().getCliente().getPersona().getNombre());
-			report.setEstado(movimientos.getCuenta().isEstado());
-			report.setFecha(movimientos.getFecha());
-			report.setMovimiento(movimientos.getValor());
-			report.setSaldoInicial(movimientos.getSaldo());
-			report.setNumCuenta(movimientos.getCuenta().getNumCuenta());
-			report.setSaldoDisponible(movimientos.getSaldo() - movimientos.getValor());
-			report.setTipo(movimientos.getTipoMovimiento());
+			Double totalDebito = movimientoDao.findTotalDebit(dateHasta, dateDesde, cuenta.getCuentaId());
 
-			listReports.add(report);
+			Double totalCredito = movimientoDao.findTotalCredit(dateHasta, dateDesde, cuenta.getCuentaId());
+
+			report.setTotalCredito(totalCredito == null ? 0 : totalCredito);
+
+			report.setTotalDebito(totalDebito == null ? 0 : totalDebito);
+
+			report.setNumCuenta(cuenta.getNumCuenta());
+
+			report.setTipoCuenta(cuenta.getTipoCuenta());
+
+			report.setSaldoDisponible(cuenta.getSaldoTotal());
+
+			report.setCliente(cuenta.getCliente().getPersona().getNombre());
+
+			report.setFechaDesde(desde);
+
+			report.setFechaHasta(hasta);
+
+			listReport.add(report);
 		}
-		return listReports;
+
+		return listReport;
 	}
 
 }

@@ -5,6 +5,8 @@ INSERT INTO persona (persona_id,direccion, edad, genero, identificacion, nombre,
 
 INSERT INTO cliente (cliente_id, contrasena, estado,persona_id) VALUES(1, '1234', 0,1);
 
-INSERT INTO cuenta (cuenta_id, estado, num_cuenta, saldo_inicial, tipo_cuenta, cliente) VALUES(1,0, '585545', 1000, 'Ahorros', 1);
+INSERT INTO cuenta (cuenta_id, estado, num_cuenta, saldo_inicial, tipo_cuenta, cliente, saldo_total) VALUES(1,0, '265879', 1000, 'Ahorros', 1,1000);
 
-INSERT INTO movimientos (fecha, saldo, tipo_movimiento, valor, cuenta) VALUES ('2022-04-28', 1000, 'Debito', 100, 1);
+INSERT INTO cuenta (cuenta_id, estado, num_cuenta, saldo_inicial, tipo_cuenta, cliente, saldo_total) VALUES(2,0, '123456', 2000, 'Crédito', 1,2000);
+
+INSERT INTO retiro (num_cuenta, valor_diario) VALUES('265879', 0);

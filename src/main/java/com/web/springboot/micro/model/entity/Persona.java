@@ -56,9 +56,7 @@ public class Persona implements Serializable{
 	
 	@NotNull
 	@Column(name="telefono")
-	private long telefono;
+	private String telefono;
 	
-	/*@OneToOne(mappedBy = "persona")
-	private Cliente cliente;*/
 
 }

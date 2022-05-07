@@ -25,6 +25,8 @@ public class CuentaDto {
 	
 	private List<MovimientosDto> movimientos;
 	
+	private double saldoTotal;
+	
 
 
 }

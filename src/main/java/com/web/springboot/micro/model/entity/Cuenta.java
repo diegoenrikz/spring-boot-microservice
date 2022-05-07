@@ -6,13 +6,11 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.MapsId;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
@@ -52,6 +50,10 @@ public class Cuenta implements Serializable{
 	@NotEmpty
 	@Column(name="estado")
 	private boolean estado;
+	
+	@NotEmpty
+	@Column(name="saldo_total")
+	private double saldoTotal;
 	
 	@ManyToOne
 	@JoinColumn(name = "cliente", referencedColumnName = "cliente_id")

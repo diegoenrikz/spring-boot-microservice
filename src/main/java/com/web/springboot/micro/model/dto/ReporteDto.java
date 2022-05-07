@@ -11,21 +11,23 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class ReporteDto {
 	
-	private Date fecha;
+	private String fechaDesde;
+	
+	private String fechaHasta;
 	
 	private String cliente;
 	
 	private long numCuenta;
-
-	private String tipo;
 	
-	private Double saldoInicial;
-	
-	private boolean estado;
-	
-	private Double movimiento;
+	private String tipoCuenta;
 	
 	private Double saldoDisponible;
+	
+	private Double totalDebito;
+	
+	private Double totalCredito;
+	
+
 
 
 }
